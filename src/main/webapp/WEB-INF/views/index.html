@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>List Products</h3>
+<p>
+    <a th:href="@{/blogs/create}">
+        Create New Product
+    </a>
+</p>
+<div id="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
+<table id="blogs">
+    <thead>
+    <tr>
+        <th>Title: </th>
+        <th>Content:</th>
+        <th>Author: </th>
+        <th>Edit: </th>
+        <th>Delete: </th>
+        <th>View: </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row:${blogs}">
+        <td th:text="${row.title}"></td>
+        <td th:text="${row.content}"></td>
+        <td th:text="${row.author}"></td>
+        <td><a th:href="@{/blogs/{id}/edit(id=${row.id})}">Edit</a> </td>
+        <td><a th:href="@{/blogs/{id}/delete(id=${row.id})}">Delete</a> </td>
+        <td><a th:href="@{/blogs/{id}/view(id=${row.id})}">View</a> </td>
+    </tr>
+    </tbody>
+</table>
+
+<footer th:replace="layout::footer"></footer>
+</body>
+</html>
