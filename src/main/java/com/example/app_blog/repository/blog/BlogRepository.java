@@ -27,10 +27,12 @@ public class BlogRepository implements IBlogRepository {
 
     @Override
     public Blog findById(Long id) {
-        String findByIdQuery = "SELECT b FROM Blog b WHERE b.id = :id";
-        TypedQuery<Blog> query = em.createQuery(findByIdQuery, Blog.class);
-        query.setParameter("id", id);
-        return query.getSingleResult();
+//        String findByIdQuery = "SELECT b FROM Blog b WHERE b.id = :id";
+//        TypedQuery<Blog> query = em.createQuery(findByIdQuery, Blog.class);
+//        query.setParameter("id", id);
+//        return query.getSingleResult();
+        if (id == null) return null;
+        return em.find(Blog.class, id);
     }
 
     @Override
